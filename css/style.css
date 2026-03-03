@@ -463,3 +463,167 @@ footer {
 .fade-in-delay-2 { transition-delay: 0.2s; }
 .fade-in-delay-3 { transition-delay: 0.3s; }
 .fade-in-delay-4 { transition-delay: 0.4s; }
+/* ================================
+   11. TYPING EFFECT
+   ================================ */
+.cursor {
+  display: inline-block;
+  color: var(--color-primary);
+  font-weight: 300;
+  animation: blink 0.8s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+/* ================================
+   12. HAMBURGER MENU
+   ================================ */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 200;
+}
+
+.bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* Animate bars into an X when open */
+.hamburger.open .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.open .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger.open .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ================================
+   13. RESPONSIVE STYLES
+   ================================ */
+@media (max-width: 768px) {
+
+  /* Show the hamburger button */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hide nav by default on mobile */
+  #nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: var(--color-surface);
+    border-left: 1px solid var(--color-border);
+    padding: 6rem var(--space-xl) var(--space-xl);
+    transition: right 0.3s ease;
+    z-index: 150;
+  }
+
+  /* Slide in when open */
+  #nav-menu.open {
+    right: 0;
+  }
+
+  /* Stack links vertically */
+  nav ul {
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  nav a {
+    font-size: var(--fs-md);
+  }
+
+  /* Overlay behind the menu */
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 140;
+  }
+
+  .nav-overlay.open {
+    display: block;
+  }
+
+  /* Stack about section on mobile */
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Hero text smaller on mobile */
+  #hero h1 {
+    font-size: var(--fs-xl);
+    letter-spacing: -1px;
+  }
+
+  /* Reduce section padding on mobile */
+  #hero,
+  #about,
+  #projects,
+  #contact {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  header {
+    padding: var(--space-md);
+  }
+
+  /* Footer stacks on mobile */
+  footer {
+    flex-direction: column;
+    gap: var(--space-md);
+    text-align: center;
+  }
+}
+#nav-menu a:hover {
+  color: var(--color-text);
+  border-bottom-color: var(--color-primary);
+}
+
+#nav-menu a {
+  display: inline-block;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: var(--transition);
+}
+/* ================================
+   14. ACTIVE NAV LINK
+   ================================ */
+nav a.active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-primary);
+}
+/* ================================
+   15. HEADER SCROLL EFFECT
+   ================================ */
+header.scrolled {
+  background-color: rgba(10, 10, 10, 0.98);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  border-bottom-color: rgba(108, 99, 255, 0.3);
+}
