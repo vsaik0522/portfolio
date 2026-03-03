@@ -1,0 +1,465 @@
+/* ================================
+   1. CSS RESET & BOX MODEL FIX
+   ================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================================
+   2. CUSTOM PROPERTIES (VARIABLES)
+   ================================ */
+:root {
+  /* Colors */
+  --color-bg:          #0a0a0a;
+  --color-surface:     #141414;
+  --color-primary:     #6c63ff;
+  --color-primary-hover: #574fd6;
+  --color-text:        #e0e0e0;
+  --color-text-muted:  #888888;
+  --color-border:      #2a2a2a;
+
+  /* Typography */
+  --font-main:         'Inter', sans-serif;
+  --fs-sm:             0.875rem;
+  --fs-base:           1rem;
+  --fs-md:             1.25rem;
+  --fs-lg:             2rem;
+  --fs-xl:             3rem;
+  --fs-xxl:            4rem;
+
+  /* Spacing */
+  --space-sm:          0.5rem;
+  --space-md:          1rem;
+  --space-lg:          2rem;
+  --space-xl:          4rem;
+  --space-xxl:         8rem;
+
+  /* Misc */
+  --radius:            8px;
+  --radius-lg:         16px;
+  --transition:        all 0.3s ease;
+  --max-width:         1100px;
+}
+
+/* ================================
+   3. BASE STYLES
+   ================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family:      var(--font-main);
+  background-color: var(--color-bg);
+  color:            var(--color-text);
+  font-size:        var(--fs-base);
+  line-height:      1.7;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+/* ================================
+   4. HEADER & NAVIGATION
+   ================================ */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: var(--space-md) var(--space-xl);
+  background-color: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 100;
+
+  /* Flexbox: logo on left, nav on right */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.5px;
+}
+
+.logo span {
+  color: var(--color-primary);
+}
+
+nav ul {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+nav a {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+}
+
+nav a:hover {
+  color: var(--color-text);
+  border-bottom-color: var(--color-primary);
+}
+/* Space below fixed header */
+main {
+  padding-top: 20px;
+}
+/* ================================
+   5. HERO SECTION
+   ================================ */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 var(--space-xl);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+#hero h1 {
+  font-size: var(--fs-xxl);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+#hero h1 span {
+  color: var(--color-primary);
+}
+
+#hero p {
+  font-size: var(--fs-lg);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+}
+
+.btn:hover {
+  background-color: var(--color-primary-hover);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+/* ================================
+   6. ABOUT SECTION
+   ================================ */
+#about {
+  padding: var(--space-xxl) var(--space-xl);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: var(--space-xl);
+  color: var(--color-text);
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xxl);
+  align-items: center;
+}
+
+.about-text p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+  font-size: var(--fs-base);
+}
+
+.about-text p strong {
+  color: var(--color-text);
+}
+
+.about-skills h3 {
+  font-size: var(--fs-base);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-md);
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.skill-tag {
+  padding: 0.4rem 1rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  transition: var(--transition);
+}
+
+.skill-tag:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+/* ================================
+   7. PROJECTS SECTION
+   ================================ */
+#projects {
+  padding: var(--space-xxl) var(--space-xl);
+  background-color: var(--color-surface);
+}
+
+#projects .section-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.project-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.project-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(108, 99, 255, 0.15);
+}
+
+.project-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-icon {
+  font-size: 2rem;
+}
+
+.project-link {
+  color: var(--color-text-muted);
+  font-size: 1.2rem;
+  transition: var(--transition);
+}
+
+.project-link:hover {
+  color: var(--color-primary);
+}
+
+.project-card h3 {
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.project-card p {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  flex-grow: 1;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.project-tag {
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(108, 99, 255, 0.1);
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+/* ================================
+   8. CONTACT SECTION
+   ================================ */
+#contact {
+  padding: var(--space-xxl) var(--space-xl);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: center;
+}
+
+#contact .section-title {
+  display: block;
+  text-align: left;
+}
+
+.contact-wrapper {
+  margin-top: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.contact-tagline {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -1px;
+  max-width: 600px;
+  line-height: 1.3;
+}
+
+.contact-tagline span {
+  color: var(--color-primary);
+}
+
+.contact-subtext {
+  color: var(--color-text-muted);
+  font-size: var(--fs-base);
+  max-width: 500px;
+}
+
+.contact-links {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contact-links .btn {
+  font-size: var(--fs-base);
+  padding: 0.9rem 2rem;
+}
+
+.social-link {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+  transition: var(--transition);
+}
+
+.social-link:hover {
+  color: var(--color-text);
+  border-bottom-color: var(--color-primary);
+}
+
+/* ================================
+   9. FOOTER
+   ================================ */
+footer {
+  padding: var(--space-lg) var(--space-xl);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-left {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+.footer-left span {
+  color: var(--color-primary);
+}
+
+.footer-right {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.footer-right a {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  transition: var(--transition);
+}
+
+.footer-right a:hover {
+  color: var(--color-text);
+}
+/* ================================
+   10. SCROLL ANIMATIONS
+   ================================ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+.fade-in-delay-4 { transition-delay: 0.4s; }
